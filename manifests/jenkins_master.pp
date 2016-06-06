@@ -22,6 +22,7 @@ class openstackci::jenkins_master (
   $project_config_repo     = '',
   $project_config_base     = '',
   $log_server              = undef,
+  $gearman_version         = '0.2.0',
 ) {
 
   class { '::jenkins::master':
@@ -48,7 +49,7 @@ class openstackci::jenkins_master (
     version => '2.3',
   }
   jenkins::plugin { 'gearman-plugin':
-    version => '0.2.0',
+    version => $gearman_version,
   }
   jenkins::plugin { 'git':
     version => '1.1.23',
